@@ -19,7 +19,6 @@ function start() {
   if (!clockRunning) {
     intervalId = setInterval(countdown, 1000);
     clockRunning = true;
-    console.log(clockRunning);
   }
 }
 
@@ -34,25 +33,44 @@ function stop() {
 }
 
 // Display timer and start timer button
-//$("#qBody").hide();
+$("#qBody").hide();
 $("#timer").html("<h3>" + time + " seconds left" + "</h3>");
 
 // When start button is clicked, countdown starts and questions and submit button are displayed
 $("#startTimerButton").on("click", function() {
-  console.log("start");
-  start();
   $("#startTimerButton").hide();
+  $("#qBody").show();
+  start();
 });
 
 if (time < 1 || submit === true) {
   stop();
+  endGame();
 }
 
 //compare user answers and correct answers
-
+$("#submitButton").on("click", function() {
+  submit = true;
+  stop();
+  endGame();
+});
 // game ends when submit button is pressed or timer runs out
 // When game ends, hide questions and submit button and display # of correct and incorrect answers
 function endGame() {
   $("#qBody").hide();
+  $("li").each(function(qNum) {
+    for (i = 1; i < 5; i++) {
+      if ($("#exampleRadios" + i).is(":checked")) {
+        console.log(this.value);
+        userAnswers.push($(this).value);
+      }
+    }
+    if (userAnswers[qNum] === allAnswers[qNum]) {
+      userCorrect++;
+    } else {
+      userIncorrect++;
+    }
+  });
+  console.log("user Answers:" + userAnswers);
 }
 // also display which questions were answered incorrectly, along with their answer and the correct answer
