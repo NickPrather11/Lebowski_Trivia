@@ -142,6 +142,7 @@ function start() {
   if (!clockRunning) {
     intervalId = setInterval(countdown, 1000);
     clockRunning = true;
+    displayQuestions();
   }
 }
 
@@ -158,10 +159,26 @@ function stop() {
 function displayQuestions() {
   for (i = 0; i < allQuestions.length; i++) {
     var q = allQuestions[i].question;
-    var c1 = allQuestions[i].choice1;
-    var c2 = allQuestions[i].choice2;
-    var c3 = allQuestions[i].choice3;
-    var c4 = allQuestions[i].choice4;
+    var choices = [allQuestions[i].choice1, allQuestions[i].choice2, allQuestions[i].choice3, allQuestions[i].choice4];
+    var newQDiv = $("<div>").attr("class", "question" + i);
+    newQDiv.text(q);
+    for (r = 1; r < 5; r++) {
+      var newFormDiv = $("<div>").attr("class", "form-check");
+      var newRadInput = $("<input>").attr("id", "radio" + r);
+      var newLabel = $("<label>").attr("for", "radio" + r);
+      newRadInput.attr("class", "form-check-input");
+      newRadInput.attr("type", "radio");
+      newRadInput.attr("name", "exampleRad" + i);
+      newRadInput.attr("value", r);
+      newFormDiv.append(newRadInput);
+      newLabel.attr("class", "form-check-label");
+      newLabel.text(choices[r - 1]);
+      newFormDiv.append(newLabel);
+      newQDiv.append(newFormDiv);
+      console.log(newRadInput.attr("name"));
+    }
+    $("#qBody").append(newQDiv);
+    $("#qBody").append("<br>");
   }
 }
 
