@@ -13,11 +13,13 @@ var incorrectAnswerArray = [];
 var clockRunning = false;
 var time = 200;
 var intervalId;
+var submit = false;
 
 function start() {
   if (!clockRunning) {
     intervalId = setInterval(countdown, 1000);
     clockRunning = true;
+    console.log(clockRunning);
   }
 }
 
@@ -32,9 +34,25 @@ function stop() {
 }
 
 // Display timer and start timer button
+//$("#qBody").hide();
+$("#timer").html("<h3>" + time + " seconds left" + "</h3>");
 
 // When start button is clicked, countdown starts and questions and submit button are displayed
+$("#startTimerButton").on("click", function() {
+  console.log("start");
+  start();
+  $("#startTimerButton").hide();
+});
+
+if (time < 1 || submit === true) {
+  stop();
+}
+
+//compare user answers and correct answers
 
 // game ends when submit button is pressed or timer runs out
 // When game ends, hide questions and submit button and display # of correct and incorrect answers
+function endGame() {
+  $("#qBody").hide();
+}
 // also display which questions were answered incorrectly, along with their answer and the correct answer
