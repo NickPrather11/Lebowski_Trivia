@@ -157,10 +157,11 @@ function stop() {
 }
 
 function displayQuestions() {
-  for (i = 0; i < allQuestions.length; i++) {
+  for (i = allQuestions.length - 1; i > -1; i--) {
     var q = allQuestions[i].question;
     var choices = [allQuestions[i].choice1, allQuestions[i].choice2, allQuestions[i].choice3, allQuestions[i].choice4];
     var newQDiv = $("<div>").attr("class", "question" + i);
+    newQDiv = $("<div>").attr("class", "ques");
     newQDiv.text(q);
     for (r = 1; r < 5; r++) {
       var newFormDiv = $("<div>").attr("class", "form-check");
@@ -175,10 +176,9 @@ function displayQuestions() {
       newLabel.text(choices[r - 1]);
       newFormDiv.append(newLabel);
       newQDiv.append(newFormDiv);
-      console.log(newRadInput.attr("name"));
     }
-    $("#qBody").append(newQDiv);
-    $("#qBody").append("<br>");
+    $("#qBody").prepend("<br>");
+    $("#qBody").prepend(newQDiv);
   }
 }
 
@@ -207,13 +207,13 @@ $("#submitButton").on("click", function() {
 // When game ends, hide questions and submit button and display # of correct and incorrect answers
 function endGame() {
   $("#qBody").hide();
-  $("li").each(function(qNum) {
+  $("#ques").each(function(qNum) {
     for (i = 1; i < 5; i++) {
-      if ($("#exampleRadios" + i).is(":checked")) {
-        console.log(this.value);
-        userAnswers.push($(this).value);
+      if ($("#exampleRad" + qNum).is(":checked")) {
+        userAnswers.push($(this).val());
       }
     }
+    console.log(userAnswers);
     if (userAnswers[qNum] === allAnswers[qNum]) {
       userCorrect++;
     } else {
