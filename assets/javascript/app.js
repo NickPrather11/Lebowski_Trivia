@@ -11,7 +11,7 @@ var userIncorrect = 0;
 var incorrectAnswerArray = [];
 //timer vars
 var clockRunning = false;
-var time = 5;
+var time = 80;
 var intervalId;
 var submit = false;
 var allQuestions = [
@@ -149,6 +149,12 @@ function start() {
 function countdown() {
   time--;
   $("#timer").html("<h3>" + time + " seconds left" + "</h3>");
+  if (time < 1) {
+    $("#qBody").hide();
+    alert("You ran out of time!");
+    endGame();
+    $("#endGame").show();
+  }
 }
 
 function stop() {
@@ -193,12 +199,6 @@ $("#startTimerButton").on("click", function() {
   $("#qBody").show();
   start();
 });
-
-if (time < 1) {
-  $("#qBody").hide();
-  endGame();
-  alert("You ran out of time!");
-}
 
 //compare user answers and correct answers
 $("#submitButton").on("click", function() {
