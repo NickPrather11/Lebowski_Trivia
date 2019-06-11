@@ -11,7 +11,7 @@ var userIncorrect = 0;
 var incorrectAnswerArray = [];
 //timer vars
 var clockRunning = false;
-var time = 100;
+var time = 5;
 var intervalId;
 var submit = false;
 var allQuestions = [
@@ -194,21 +194,22 @@ $("#startTimerButton").on("click", function() {
   start();
 });
 
-if (time < 1 || submit === true) {
-  stop();
+if (time < 1) {
+  $("#qBody").hide();
   endGame();
+  alert("You ran out of time!");
 }
 
 //compare user answers and correct answers
 $("#submitButton").on("click", function() {
   submit = true;
-  stop();
   endGame();
   $("#endGame").show();
 });
 // game ends when submit button is pressed or timer runs out
 // When game ends, hide questions and submit button and display # of correct and incorrect answers
 function endGame() {
+  stop();
   $("#qBody").hide();
   $(".ques").each(function(qNum) {
     var chosen = $("input[name=exampleRad" + qNum + "]:checked").val();

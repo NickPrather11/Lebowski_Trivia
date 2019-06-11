@@ -31,5 +31,6 @@ h2 {
 #endGame {
   border: 5px solid white;
   color: white;
+  background-color: sienna;
   margin: 30px;
 }
