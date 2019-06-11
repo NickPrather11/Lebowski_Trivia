@@ -184,6 +184,8 @@ function displayQuestions() {
 
 // Display timer and start timer button
 $("#timer").html("<h3>" + time + " seconds left" + "</h3>");
+$("#qBody").hide();
+$("#endGame").hide();
 
 // When start button is clicked, countdown starts and questions and submit button are displayed
 $("#startTimerButton").on("click", function() {
@@ -202,6 +204,7 @@ $("#submitButton").on("click", function() {
   submit = true;
   stop();
   endGame();
+  $("#endGame").show();
 });
 // game ends when submit button is pressed or timer runs out
 // When game ends, hide questions and submit button and display # of correct and incorrect answers
@@ -221,7 +224,7 @@ function endGame() {
     }
   });
   var score = userCorrect + "/" + allQuestions.length;
-  $("#endGame").html("<h1>" + "Your Score: " + score + "</h1>");
+  $("#endGame").text("Your Score: " + score);
   //console.log(incorrectAnswerArray);
 }
 
