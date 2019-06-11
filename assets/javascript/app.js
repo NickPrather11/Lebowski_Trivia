@@ -207,19 +207,20 @@ $("#submitButton").on("click", function() {
 // When game ends, hide questions and submit button and display # of correct and incorrect answers
 function endGame() {
   $("#qBody").hide();
-  $("#ques").each(function(qNum) {
-    for (i = 1; i < 5; i++) {
-      if ($("#exampleRad" + qNum).is(":checked")) {
-        userAnswers.push($(this).val());
-      }
-    }
-    console.log(userAnswers);
-    if (userAnswers[qNum] === allAnswers[qNum]) {
+  $(".ques").each(function(qNum) {
+    var chosen = $("input[name=exampleRad" + qNum + "]:checked").val();
+    console.log(chosen);
+    userAnswers.push(chosen);
+    if (chosen == allQuestions[qNum].correctChoice) {
+      //console.log("correct!");
       userCorrect++;
     } else {
+      //console.log("incorrect");
       userIncorrect++;
+      incorrectAnswerArray.push(allQuestions[qNum]);
     }
   });
-  console.log("user Answers:" + userAnswers);
+  //console.log(incorrectAnswerArray);
 }
+
 // also display which questions were answered incorrectly, along with their answer and the correct answer
