@@ -11,7 +11,7 @@ var userIncorrect = 0;
 var incorrectAnswerArray = [];
 //timer vars
 var clockRunning = false;
-var time = 200;
+var time = 100;
 var intervalId;
 var submit = false;
 var allQuestions = [
@@ -220,6 +220,8 @@ function endGame() {
       incorrectAnswerArray.push(allQuestions[qNum]);
     }
   });
+  var score = userCorrect + "/" + allQuestions.length;
+  $("#endGame").html("<h1>" + "Your Score: " + score + "</h1>");
   //console.log(incorrectAnswerArray);
 }
 
