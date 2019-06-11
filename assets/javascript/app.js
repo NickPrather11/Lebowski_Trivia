@@ -212,7 +212,6 @@ function endGame() {
   $("#qBody").hide();
   $(".ques").each(function(qNum) {
     var chosen = $("input[name=exampleRad" + qNum + "]:checked").val();
-    console.log(chosen);
     userAnswers.push(chosen);
     if (chosen == allQuestions[qNum].correctChoice) {
       //console.log("correct!");
@@ -224,7 +223,8 @@ function endGame() {
     }
   });
   var score = userCorrect + "/" + allQuestions.length;
-  $("#endGame").text("Your Score: " + score);
+  $("#endGame").html("<h2>" + "Your Score: " + score + "</h2>");
+
   //console.log(incorrectAnswerArray);
 }
 

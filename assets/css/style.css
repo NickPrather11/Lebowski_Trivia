@@ -13,6 +13,12 @@ h1 {
   font-family: "Rye", cursive;
 }
 
+h2 {
+  font-size: 80px;
+  font-weight: bold;
+  color: lime;
+}
+
 #timer {
   border: 2px solid magenta;
   color: lime;
@@ -23,9 +29,7 @@ h1 {
 }
 
 #endGame {
-  font-size: 80px;
-  font-weight: bold;
   border: 5px solid white;
-  color: lime;
+  color: white;
   margin: 30px;
 }
