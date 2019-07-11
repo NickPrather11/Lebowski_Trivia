@@ -11,7 +11,7 @@ var userIncorrect = 0;
 var incorrectAnswerArray = [];
 //timer vars
 var clockRunning = false;
-var time = 80;
+var time = 120;
 var intervalId;
 var submit = false;
 var allQuestions = [
