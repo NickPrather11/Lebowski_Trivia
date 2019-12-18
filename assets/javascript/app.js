@@ -176,10 +176,8 @@ function endGame() {
     var chosen = $("input[name=exampleRad" + qNum + "]:checked").val();
     userAnswers.push(chosen);
     if (chosen == allQuestions[qNum].correctChoice) {
-      //console.log("correct!");
       userCorrect++;
     } else {
-      //console.log("incorrect");
       userIncorrect++;
       incorrectAnswerArray.push(allQuestions[qNum]);
     }
@@ -187,19 +185,15 @@ function endGame() {
   var score = userCorrect + "/" + allQuestions.length;
   $("#endGame").html("<h2>" + "Your Score: " + score + "</h2>");
   showCorrectedAnswers();
-  var playAgainBtn = $("<button>")
+  var tryAgainBtn = $("<button>")
     .addClass("btn btn-primary mb-2")
-    .text("Play Again")
+    .text("Try Again")
     .attr("type", "button")
-    .attr("id", "playAgain");
-  $("#endGame").append(playAgainBtn);
-
-  console.log("user answers", userAnswers);
-  console.log("wrong answers", incorrectAnswerArray);
+    .attr("id", "tryAgain");
+  $("#endGame").append(tryAgainBtn);
 }
 
-$("#endGame").on("click", "#playAgain", function() {
-  console.log("Play again clicked");
+$("#endGame").on("click", "#tryAgain", function() {
   userAnswers = [];
   userCorrect = 0;
   userIncorrect = 0;
@@ -227,10 +221,20 @@ function showCorrectedAnswers() {
         yourAnswer = item.choices[userAnswers[id]];
       }
     });
+    var rightAnswerDiv = $("<div>").addClass("rightAnswer");
+    var correctSymbol = $("<span>")
+      .addClass("fas fa-check")
+      .attr("style", "color:lime");
+    $(rightAnswerDiv).append(correctSymbol, " ", correctAnswer);
+    var wrongAnswerDiv = $("<div>").addClass("wrongAnswer");
+    var wrongSymbol = $("<span>")
+      .addClass("fas fa-times")
+      .attr("style", "color:red");
+    $(wrongAnswerDiv).append(wrongSymbol, " ", yourAnswer);
 
     $(newCorrectedAnswer).append("<p><strong>" + item.question + "</strong></p>");
-    $(newCorrectedAnswer).append("<p>" + "Your Answer: " + yourAnswer + "</p>");
-    $(newCorrectedAnswer).append("<p>" + "Correct Answer: " + correctAnswer + "</p><br>");
+    $(newCorrectedAnswer).append(wrongAnswerDiv);
+    $(newCorrectedAnswer).append(rightAnswerDiv, "<br>");
     $(correctedAnswersDiv).append(newCorrectedAnswer);
   });
   $("#endGame").append(correctedAnswersDiv);
