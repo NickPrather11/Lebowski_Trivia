@@ -17,124 +17,79 @@ var submit = false;
 var allQuestions = [
   {
     question: "What is The Dude's favorite drink?",
-    choice1: "Gin and Tonic",
-    choice2: "Black Tooth Grin",
-    choice3: "White Russian",
-    choice4: "Wine Spritzer",
-    correctChoice: 3
+    choices: ["Gin and Tonic", "Black Tooth Grin", "White Russian", "Wine Spritzer"],
+    correctChoice: 2
   },
   {
     question:
       "After one of the thugs inspects his bowling ball, asking what it is, the Dude states, 'Obviously, you are not a ______.'",
-    choice1: "Bowler",
-    choice2: "Plumber",
-    choice3: "Electrician",
-    choice4: "Golfer",
-    correctChoice: 4
+    choices: ["Bowler", "Plumber", "Electrician", "Golfer"],
+    correctChoice: 3
   },
   {
     question: "What famous musician portrays one of the Nihilists?",
-    choice1: "Moby",
-    choice2: "Flea",
-    choice3: "Madonna",
-    choice4: "Cher",
-    correctChoice: 2
+    choices: ["Moby", "Flea", "Madonna", "Cher"],
+    correctChoice: 1
   },
   {
     question: "What does bowling have that 'Nam does not?",
-    choice1: "Beer",
-    choice2: "Judaism",
-    choice3: "Dogs",
-    choice4: "Rules",
-    correctChoice: 4
+    choices: ["Beer", "Judaism", "Dogs", "Rules"],
+    correctChoice: 3
   },
   {
     question: "What band does The Dude hate?",
-    choice1: "Creedence Clearwater Revival",
-    choice2: "The Beatles",
-    choice3: "Metallica",
-    choice4: "The Eagles",
-    correctChoice: 4
+    choices: ["Creedence Clearwater Revival", "The Beatles", "Metallica", "The Eagles"],
+    correctChoice: 3
   },
   {
     question: "What's inside the briefcase that Walter throws to the nihilists?",
-    choice1: "Phone books",
-    choice2: "Fake money",
-    choice3: "Dirty undies",
-    choice4: "Newspaper",
-    correctChoice: 3
-  },
-  {
-    question: "'Sometimes you eat the ____, and sometimes the ____ eats you.'",
-    choice1: "Bar",
-    choice2: "Bear",
-    choice3: "World",
-    choice4: "Ball",
-    correctChoice: 1
-  },
-  {
-    question: "At the end of the movie, what drink does the mysterious stranger order?",
-    choice1: "Phosphate",
-    choice2: "Milkshake",
-    choice3: "Beer",
-    choice4: "Sarsaparilla",
-    correctChoice: 4
-  },
-  {
-    question: "What is the name of the movie The Dude hallucinates himself in?",
-    choice1: "Logjammin'",
-    choice2: "The Dude and The Dudette",
-    choice3: "The Plumber and The Viking Queen",
-    choice4: "Gutterballs",
-    correctChoice: 4
-  },
-  {
-    question: "The Big Lebowski sponsers a group of youths called the 'Little Lebowski ______ _______.'",
-    choice1: "Urban Achievers",
-    choice2: "Suburban Achievers",
-    choice3: "Rural Achievers",
-    choice4: "Urban Go-Getters",
-    correctChoice: 1
-  },
-  {
-    question: "What is the name of the Big Lebowski's butler?",
-    choice1: "Burt",
-    choice2: "Brett",
-    choice3: "Brandt",
-    choice4: "Bart",
-    correctChoice: 3
-  },
-  {
-    question: "What band's tapes did The Dude lose when his car was stolen?",
-    choice1: "The Eagles",
-    choice2: "Creedence Clearwater Revival",
-    choice3: "Bob Dylan",
-    choice4: "The Byrds",
+    choices: ["Phone books", "Fake money", "Dirty undies", "Newspaper"],
     correctChoice: 2
   },
   {
-    question: "What chain store card serves as The Dude's only form of ID?",
-    choice1: "Ralph's",
-    choice2: "Roses",
-    choice3: "Food Lion",
-    choice4: "Harris Teeter",
-    correctChoice: 1
+    question: "'Sometimes you eat the ____, and sometimes the ____ eats you.'",
+    choices: ["Bar", "Bear", "World", "Ball"],
+    correctChoice: 0
   },
   {
-    question: " What kind of dog does Walter think he's babysitting for his ex?",
-    choice1: "Schnauzer",
-    choice2: "Chihuahua",
-    choice3: "Pomeranian",
-    choice4: "Labradoodle",
+    question: "At the end of the movie, what drink does the mysterious stranger order?",
+    choices: ["Phosphate", "Milkshake", "Beer", "Sarsaparilla"],
     correctChoice: 3
   },
   {
-    question: "What is the name of the Nihilist's electro-pop band?",
-    choice1: "Autobahn",
-    choice2: "Kraftwerk",
-    choice3: "The Nihilists",
-    choice4: "Nagelbett",
+    question: "What is the name of the movie The Dude hallucinates himself in?",
+    choices: ["Logjammin'", "The Dude and The Dudette", "The Plumber and The Viking Queen", "Gutterballs"],
+    correctChoice: 3
+  },
+  {
+    question: "The Big Lebowski sponsers a group of youths called the 'Little Lebowski ______ _______.'",
+    choices: ["Urban Achievers", "Suburban Achievers", "Rural Achievers", "Urban Go-Getters"],
+    correctChoice: 0
+  },
+  {
+    question: "What is the name of the Big Lebowski's butler?",
+    choices: ["Burt", "Brett", "Brandt", "Bart"],
+    correctChoice: 2
+  },
+  {
+    question: "What band's tapes did The Dude lose when his car was stolen?",
+    choices: ["The Eagles", "Creedence Clearwater Revival", "Bob Dylan", "The Byrds"],
     correctChoice: 1
+  },
+  {
+    question: "What chain store card serves as The Dude's only form of ID?",
+    choices: ["Ralph's", "Roses", "Food Lion", "Harris Teeter"],
+    correctChoice: 0
+  },
+  {
+    question: " What kind of dog does Walter think he's babysitting for his ex?",
+    choices: ["Schnauzer", "Chihuahua", "Pomeranian", "Labradoodle"],
+    correctChoice: 2
+  },
+  {
+    question: "What is the name of the Nihilist's electro-pop band?",
+    choices: ["Autobahn", "Kraftwerk", "The Nihilists", "Nagelbett"],
+    correctChoice: 0
   }
 ];
 
@@ -165,11 +120,11 @@ function stop() {
 function displayQuestions() {
   for (i = allQuestions.length - 1; i > -1; i--) {
     var q = allQuestions[i].question;
-    var choices = [allQuestions[i].choice1, allQuestions[i].choice2, allQuestions[i].choice3, allQuestions[i].choice4];
+    var choices = allQuestions[i].choices;
     var newQDiv = $("<div>").attr("class", "question" + i);
     newQDiv = $("<div>").attr("class", "ques");
     newQDiv.text(q);
-    for (r = 1; r < 5; r++) {
+    for (r = 0; r < 4; r++) {
       var newFormDiv = $("<div>").attr("class", "form-check");
       var newRadInput = $("<input>").attr("id", "radio" + r);
       var newLabel = $("<label>").attr("for", "radio" + r);
@@ -179,7 +134,7 @@ function displayQuestions() {
       newRadInput.attr("value", r);
       newFormDiv.append(newRadInput);
       newLabel.attr("class", "form-check-label");
-      newLabel.text(choices[r - 1]);
+      newLabel.text(choices[r]);
       newFormDiv.append(newLabel);
       newQDiv.append(newFormDiv);
     }
@@ -231,6 +186,7 @@ function endGame() {
   });
   var score = userCorrect + "/" + allQuestions.length;
   $("#endGame").html("<h2>" + "Your Score: " + score + "</h2>");
+  showCorrectedAnswers();
   var playAgainBtn = $("<button>")
     .addClass("btn btn-primary mb-2")
     .text("Play Again")
@@ -238,7 +194,8 @@ function endGame() {
     .attr("id", "playAgain");
   $("#endGame").append(playAgainBtn);
 
-  //console.log(incorrectAnswerArray);
+  console.log("user answers", userAnswers);
+  console.log("wrong answers", incorrectAnswerArray);
 }
 
 $("#endGame").on("click", "#playAgain", function() {
@@ -259,3 +216,22 @@ $("#endGame").on("click", "#playAgain", function() {
 });
 
 // also display which questions were answered incorrectly, along with their answer and the correct answer
+function showCorrectedAnswers() {
+  var correctedAnswersDiv = $("<div>").attr("id", "correctedAnswers");
+  incorrectAnswerArray.forEach((item, index) => {
+    var newCorrectedAnswer = $("<div>").attr("id", "answer" + index);
+    var yourAnswer,
+      correctAnswer = item.choices[item.correctChoice];
+    allQuestions.forEach((question, id) => {
+      if (question.question === item.question) {
+        yourAnswer = item.choices[userAnswers[id]];
+      }
+    });
+
+    $(newCorrectedAnswer).append("<p><strong>" + item.question + "</strong></p>");
+    $(newCorrectedAnswer).append("<p>" + "Your Answer: " + yourAnswer + "</p>");
+    $(newCorrectedAnswer).append("<p>" + "Correct Answer: " + correctAnswer + "</p><br>");
+    $(correctedAnswersDiv).append(newCorrectedAnswer);
+  });
+  $("#endGame").append(correctedAnswersDiv);
+}
