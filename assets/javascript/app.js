@@ -186,6 +186,12 @@ function displayQuestions() {
     $("#qBody").prepend("<br>");
     $("#qBody").prepend(newQDiv);
   }
+  var submitBtn = $("<button>")
+    .attr("type", "submit")
+    .addClass("btn btn-primary mb-2")
+    .attr("id", "submitButton")
+    .text("Submit");
+  $("#qBody").append(submitBtn);
 }
 
 // Display timer and start timer button
@@ -201,7 +207,7 @@ $("#startTimerButton").on("click", function() {
 });
 
 //compare user answers and correct answers
-$("#submitButton").on("click", function() {
+$("#qBody").on("click", "#submitButton", function() {
   submit = true;
   endGame();
   $("#endGame").show();
@@ -225,8 +231,31 @@ function endGame() {
   });
   var score = userCorrect + "/" + allQuestions.length;
   $("#endGame").html("<h2>" + "Your Score: " + score + "</h2>");
+  var playAgainBtn = $("<button>")
+    .addClass("btn btn-primary mb-2")
+    .text("Play Again")
+    .attr("type", "button")
+    .attr("id", "playAgain");
+  $("#endGame").append(playAgainBtn);
 
   //console.log(incorrectAnswerArray);
 }
+
+$("#endGame").on("click", "#playAgain", function() {
+  console.log("Play again clicked");
+  userAnswers = [];
+  userCorrect = 0;
+  userIncorrect = 0;
+  incorrectAnswerArray = [];
+  clockRunning = false;
+  time = 120;
+  submit = false;
+  $("#endGame")
+    .empty()
+    .hide();
+  $("#qBody").empty();
+  $("#startTimerButton").show();
+  $("#timer").html("<h3>" + time + " seconds left" + "</h3>");
+});
 
 // also display which questions were answered incorrectly, along with their answer and the correct answer
