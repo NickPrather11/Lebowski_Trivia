@@ -1,12 +1,11 @@
 body {
   background-image: url("../images/lebowski_rug.jpg");
+  background-attachment: fixed;
+  background-position: center top;
 }
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  color: white;
+
+header {
+  margin: 2rem;
 }
 
 h1 {
@@ -22,6 +21,19 @@ h2 {
 
 h3 {
   font-size: 2rem;
+}
+
+hr {
+  border: 1px solid white;
+  width: 90%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  color: white;
 }
 
 #timer {
@@ -46,4 +58,10 @@ h3 {
   color: white;
   background-color: sienna;
   margin: 2rem;
+  padding: 1rem;
+}
+
+#score {
+  margin-top: 2rem;
+  margin-bottom: 4rem;
 }

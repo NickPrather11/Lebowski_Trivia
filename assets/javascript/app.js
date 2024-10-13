@@ -208,7 +208,7 @@ function endGame() {
     }
   });
   var score = userCorrect + "/" + allQuestions.length;
-  $("#endGame").html("<h2>" + "Your Score: " + score + "</h2>");
+  $("#endGame").html("<h2 id='score'>" + "Your Score: " + score + "</h2>");
   showCorrectedAnswers();
   var tryAgainBtn = $("<button>")
     .addClass("btn btn-primary mb-2")
@@ -282,6 +282,7 @@ $("#endGame").on("click", "#tryAgain", function () {
   submit = false;
   $("#endGame").empty().hide();
   $("#qBody").empty();
+  $("#timerDiv").show();
   $("#startTimerButton").show();
   $("#timer").html("<h3>" + time + " seconds left" + "</h3>");
 });
