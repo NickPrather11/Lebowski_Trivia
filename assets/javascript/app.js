@@ -1,4 +1,4 @@
-// Global vars
+// GLOBAL VARS
 //correct answer array
 var allAnswers = [3, 4, 2, 4, 4, 3, 1, 4, 4, 1, 3, 2, 1, 2, 1];
 //user answer array
@@ -17,81 +17,119 @@ var submit = false;
 var allQuestions = [
   {
     question: "What is The Dude's favorite drink?",
-    choices: ["Gin and Tonic", "Black Tooth Grin", "White Russian", "Wine Spritzer"],
-    correctChoice: 2
+    choices: [
+      "Gin and Tonic",
+      "Black Tooth Grin",
+      "White Russian",
+      "Wine Spritzer",
+    ],
+    correctChoice: 2,
   },
   {
     question:
       "After one of the thugs inspects his bowling ball, asking what it is, the Dude states, 'Obviously, you are not a ______.'",
     choices: ["Bowler", "Plumber", "Electrician", "Golfer"],
-    correctChoice: 3
+    correctChoice: 3,
   },
   {
     question: "What famous musician portrays one of the Nihilists?",
     choices: ["Moby", "Flea", "Madonna", "Cher"],
-    correctChoice: 1
+    correctChoice: 1,
   },
   {
     question: "What does bowling have that 'Nam does not?",
     choices: ["Beer", "Judaism", "Dogs", "Rules"],
-    correctChoice: 3
+    correctChoice: 3,
   },
   {
     question: "What band does The Dude hate?",
-    choices: ["Creedence Clearwater Revival", "The Beatles", "Metallica", "The Eagles"],
-    correctChoice: 3
+    choices: [
+      "Creedence Clearwater Revival",
+      "The Beatles",
+      "Metallica",
+      "The Eagles",
+    ],
+    correctChoice: 3,
   },
   {
-    question: "What's inside the briefcase that Walter throws to the nihilists?",
+    question:
+      "What's inside the briefcase that Walter throws to the nihilists?",
     choices: ["Phone books", "Fake money", "Dirty undies", "Newspaper"],
-    correctChoice: 2
+    correctChoice: 2,
   },
   {
     question: "'Sometimes you eat the ____, and sometimes the ____ eats you.'",
     choices: ["Bar", "Bear", "World", "Ball"],
-    correctChoice: 0
+    correctChoice: 0,
   },
   {
-    question: "At the end of the movie, what drink does the mysterious stranger order?",
+    question:
+      "At the end of the movie, what drink does the mysterious stranger order?",
     choices: ["Phosphate", "Milkshake", "Beer", "Sarsaparilla"],
-    correctChoice: 3
+    correctChoice: 3,
   },
   {
     question: "What is the name of the movie The Dude hallucinates himself in?",
-    choices: ["Logjammin'", "The Dude and The Dudette", "The Plumber and The Viking Queen", "Gutterballs"],
-    correctChoice: 3
+    choices: [
+      "Logjammin'",
+      "The Dude and The Dudette",
+      "The Plumber and The Viking Queen",
+      "Gutterballs",
+    ],
+    correctChoice: 3,
   },
   {
-    question: "The Big Lebowski sponsers a group of youths called the 'Little Lebowski ______ _______.'",
-    choices: ["Urban Achievers", "Suburban Achievers", "Rural Achievers", "Urban Go-Getters"],
-    correctChoice: 0
+    question:
+      "The Big Lebowski sponsers a group of youths called the 'Little Lebowski ______ _______.'",
+    choices: [
+      "Urban Achievers",
+      "Suburban Achievers",
+      "Rural Achievers",
+      "Urban Go-Getters",
+    ],
+    correctChoice: 0,
   },
   {
     question: "What is the name of the Big Lebowski's butler?",
     choices: ["Burt", "Brett", "Brandt", "Bart"],
-    correctChoice: 2
+    correctChoice: 2,
   },
   {
     question: "What band's tapes did The Dude lose when his car was stolen?",
-    choices: ["The Eagles", "Creedence Clearwater Revival", "Bob Dylan", "The Byrds"],
-    correctChoice: 1
+    choices: [
+      "The Eagles",
+      "Creedence Clearwater Revival",
+      "Bob Dylan",
+      "The Byrds",
+    ],
+    correctChoice: 1,
   },
   {
     question: "What chain store card serves as The Dude's only form of ID?",
     choices: ["Ralph's", "Roses", "Food Lion", "Harris Teeter"],
-    correctChoice: 0
+    correctChoice: 0,
   },
   {
-    question: " What kind of dog does Walter think he's babysitting for his ex?",
+    question:
+      " What kind of dog does Walter think he's babysitting for his ex?",
     choices: ["Schnauzer", "Chihuahua", "Pomeranian", "Labradoodle"],
-    correctChoice: 2
+    correctChoice: 2,
   },
   {
     question: "What is the name of the Nihilist's electro-pop band?",
     choices: ["Autobahn", "Kraftwerk", "The Nihilists", "Nagelbett"],
-    correctChoice: 0
-  }
+    correctChoice: 0,
+  },
 ];
+
+// ****** INITIALIZE PAGE ******
+
+// Display timer and start timer button
+$("#timer").html("<h3>" + time + " seconds left" + "</h3>");
+$("#qBody").hide();
+$("#endGame").hide();
+
+// ****** HELPERS ******
 
 function start() {
   if (!clockRunning) {
@@ -149,31 +187,17 @@ function displayQuestions() {
   $("#qBody").append(submitBtn);
 }
 
-// Display timer and start timer button
-$("#timer").html("<h3>" + time + " seconds left" + "</h3>");
-$("#qBody").hide();
-$("#endGame").hide();
-
-// When start button is clicked, countdown starts and questions and submit button are displayed
-$("#startTimerButton").on("click", function() {
-  $("#startTimerButton").hide();
-  $("#qBody").show();
-  start();
-});
-
-//compare user answers and correct answers
-$("#qBody").on("click", "#submitButton", function() {
-  submit = true;
-  endGame();
-  $("#endGame").show();
-});
 // game ends when submit button is pressed or timer runs out
 // When game ends, hide questions and submit button and display # of correct and incorrect answers
 function endGame() {
   stop();
   $("#qBody").hide();
-  $(".ques").each(function(qNum) {
+  $(".ques").each(function (qNum) {
     var chosen = $("input[name=exampleRad" + qNum + "]:checked").val();
+    if (chosen == null) {
+      chosen = -1;
+    }
+    console.log("chosen: " + chosen);
     userAnswers.push(chosen);
     if (chosen == allQuestions[qNum].correctChoice) {
       userCorrect++;
@@ -193,22 +217,6 @@ function endGame() {
   $("#endGame").append(tryAgainBtn);
 }
 
-$("#endGame").on("click", "#tryAgain", function() {
-  userAnswers = [];
-  userCorrect = 0;
-  userIncorrect = 0;
-  incorrectAnswerArray = [];
-  clockRunning = false;
-  time = 120;
-  submit = false;
-  $("#endGame")
-    .empty()
-    .hide();
-  $("#qBody").empty();
-  $("#startTimerButton").show();
-  $("#timer").html("<h3>" + time + " seconds left" + "</h3>");
-});
-
 // also display which questions were answered incorrectly, along with their answer and the correct answer
 function showCorrectedAnswers() {
   var correctedAnswersDiv = $("<div>").attr("id", "correctedAnswers");
@@ -218,7 +226,11 @@ function showCorrectedAnswers() {
       correctAnswer = item.choices[item.correctChoice];
     allQuestions.forEach((question, id) => {
       if (question.question === item.question) {
-        yourAnswer = item.choices[userAnswers[id]];
+        if (userAnswers[id] != -1) {
+          yourAnswer = item.choices[userAnswers[id]];
+        } else {
+          yourAnswer = "(unanswered)";
+        }
       }
     });
     var rightAnswerDiv = $("<div>").addClass("rightAnswer");
@@ -232,10 +244,42 @@ function showCorrectedAnswers() {
       .attr("style", "color:red");
     $(wrongAnswerDiv).append(wrongSymbol, " ", yourAnswer);
 
-    $(newCorrectedAnswer).append("<p><strong>" + item.question + "</strong></p>");
+    $(newCorrectedAnswer).append(
+      "<p><strong>" + item.question + "</strong></p>"
+    );
     $(newCorrectedAnswer).append(wrongAnswerDiv);
     $(newCorrectedAnswer).append(rightAnswerDiv, "<br>");
     $(correctedAnswersDiv).append(newCorrectedAnswer);
   });
   $("#endGame").append(correctedAnswersDiv);
 }
+
+// ****** EVENT LISTENERS ******
+
+// When start button is clicked, countdown starts and questions and submit button are displayed
+$("#startTimerButton").on("click", function () {
+  $("#startTimerButton").hide();
+  $("#qBody").show();
+  start();
+});
+
+//compare user answers and correct answers
+$("#qBody").on("click", "#submitButton", function () {
+  submit = true;
+  endGame();
+  $("#endGame").show();
+});
+
+$("#endGame").on("click", "#tryAgain", function () {
+  userAnswers = [];
+  userCorrect = 0;
+  userIncorrect = 0;
+  incorrectAnswerArray = [];
+  clockRunning = false;
+  time = 120;
+  submit = false;
+  $("#endGame").empty().hide();
+  $("#qBody").empty();
+  $("#startTimerButton").show();
+  $("#timer").html("<h3>" + time + " seconds left" + "</h3>");
+});

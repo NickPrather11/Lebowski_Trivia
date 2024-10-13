@@ -11,26 +11,39 @@ body {
 
 h1 {
   font-family: "Rye", cursive;
+  font-size: 3rem;
 }
 
 h2 {
-  font-size: 80px;
+  font-size: 2rem;
   font-weight: bold;
   color: lime;
+}
+
+h3 {
+  font-size: 2rem;
 }
 
 #timer {
   border: 2px solid magenta;
   color: lime;
-  padding: 5px;
+  padding: 0.3rem;
   margin: auto;
-  margin-bottom: 10px;
-  width: 25%;
+  margin-bottom: 1rem;
+  width: 16rem;
+}
+
+#startTimerButton {
+  width: 4rem;
+}
+
+#ques {
+  text-wrap: wrap;
 }
 
 #endGame {
-  border: 5px solid white;
+  border: 2px solid white;
   color: white;
   background-color: sienna;
-  margin: 30px;
+  margin: 2rem;
 }
