@@ -1,7 +1,7 @@
 # The Big Lebowski Trivia Game
 
 Deployed here:
-https://nickprather11.github.io/TriviaGame/
+https://nickprather11.github.io/Lebowski_Trivia/
 
 This is a trivia game about the film "The Big Lebowski". You have 120 seconds to answer all 15 questions.
 When you are finished answering, click the "submit" button.
