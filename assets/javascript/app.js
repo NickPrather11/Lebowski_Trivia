@@ -147,6 +147,7 @@ function countdown() {
     alert("You ran out of time!");
     endGame();
     $("#endGame").show();
+    $("html, body").animate({ scrollTop: 0 }, "slow");
   }
 }
 
@@ -192,12 +193,12 @@ function displayQuestions() {
 function endGame() {
   stop();
   $("#qBody").hide();
+  $("#timerDiv").hide();
   $(".ques").each(function (qNum) {
     var chosen = $("input[name=exampleRad" + qNum + "]:checked").val();
     if (chosen == null) {
       chosen = -1;
     }
-    console.log("chosen: " + chosen);
     userAnswers.push(chosen);
     if (chosen == allQuestions[qNum].correctChoice) {
       userCorrect++;
@@ -268,6 +269,7 @@ $("#qBody").on("click", "#submitButton", function () {
   submit = true;
   endGame();
   $("#endGame").show();
+  $("html, body").animate({ scrollTop: 0 }, "slow");
 });
 
 $("#endGame").on("click", "#tryAgain", function () {
